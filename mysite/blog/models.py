@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from stdimage import StdImageField
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -10,9 +10,18 @@ class Post(models.Model):
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
-    models.ImageField(upload_to='recipeimg')
+    image = StdImageField(blank=True, null=True, variations={'resize': (420, 160, True)}) 
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
+    category = models.CharField(
+        max_length=9,
+        choices= (
+        ('breakfast', 'Breakfast'),
+        ('dinner', 'Dinner'),
+        ('snacks', 'Snacks'),
+        ),
+        default='dinner',
+    )
 
     def publish(self):
         self.published_date = timezone.now()
