@@ -27,7 +27,6 @@
 
                 </div>
                 </nav>
-                <a class="btn btn-blog pull-right marginBottom10" href="{% url 'new_recipe' %}"><b>NEW RECIPE</b></a>
             </div>
         </div>
         <div class="container">
@@ -76,33 +75,19 @@
 
     <div class="blog-items">
         <div class="container">
-            {% for post in posts %}
-
             <div class="row">
                 <div class="col-sm-5 blogShort last-blog-item">
-                    <h1><a style="color: #5F1049;
-                    !important;
-                    font-family: LobsterTwo-Regular;
-                    font-weight: 500;" href="{% url 'fullrecipe' pk=post.pk %}">{{ post.title }}</a></h1>
-                    <div class="resize">
-                        <img href="{% url 'fullrecipe' pk=post.pk %}" src={{post.image.resize.url}} alt="{{post.title}}" class="pull-left img-responsive thumb margin10 img-thumbnail">
-                        <!--<img src="img\sweetpotatopancakes.jpg" alt="Sweet Potato Pancakes" class="pull-left img-responsive thumb margin10 img-thumbnail"> !-->
-                    </div>
+                    <h1 style="color: #5F1049;
+                  !important;
+                  font-family: LobsterTwo-Regular;
+                  font-weight: 500;">New Recipe</h1>
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
-                    {% if post.published_date %}
-                    <p><b>{{ post.published_date }}</b></p>
-                    {% endif %}
-                    <article>
-                        <p>
-                            {{ post.text|linebreaksbr|truncatechars:675 }}
-                        </p>
-                    </article>
-                    <a class="btn btn-blog pull-right marginBottom10" href="{% url 'fullrecipe' pk=post.pk %}">READ MORE</a>
+                    <form method="POST" enctype="multipart/form-data" class="post-form">{% csrf_token %} {{ form.as_p}}
+                        <button type="submit" class="save btn btn-blog pull-right marginBottom10">SAVE</button>
+                    </form>
                 </div>
             </div>
-
-            {% endfor %}
         </div>
     </div>
     </div>
