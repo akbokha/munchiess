@@ -21,7 +21,7 @@ class Post(models.Model):
         ('snacks', 'Snacks'),
         ),
         default='snacks',
-    )
+        )
 
     def publish(self):
         self.published_date = timezone.now()
@@ -29,3 +29,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def increment_views(self):
+        self.views += 1
+
+    def increment_likes(self):
+        self.likes += 1
+        

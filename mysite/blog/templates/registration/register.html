@@ -47,15 +47,6 @@
 
                 </div>
                 </nav>
-                {% if user.is_authenticated %}
-                <a class="btn btn-blog-logout pull-right marginBottom10" href="{% url 'logout' %}"><b>LOG OUT</b></a>
-                <a class="btn btn-blog pull-right marginBottom10" href="{% url 'new_recipe' %}"><b>NEW RECIPE</b></a>
-                <h1 class="top-menu">Hello {{ user.username }}</h1>
-                {% else %}
-                <a class="btn btn-blog pull-right marginBottom10" href="{% url 'login' %}"><b>LOGIN</b></a>
-                <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a>
-                {% endif %}
-                <!--  <a class="btn btn-blog pull-right marginBottom10" href="{% url 'edit_recipe' pk=recipe.pk %}"><b>EDIT RECIPE</b></a> !-->
             </div>
         </div>
         <div class="container">
@@ -106,28 +97,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 blogShort last-blog-item">
-                    <h1 style="color: #5F1049;
-                  !important;
-                  font-family: LobsterTwo-Regular;
-                  font-weight: 500;">{{ recipe.title }}</h1>
-                    <div class="resize">
-                        <img src={{recipe.image.resize.url}} alt="{{recipe.title}}" class="pull-left img-responsive thumb margin10 img-thumbnail">
-                    </div>
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
-                  <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'fullrecipelike' pk=recipe.pk %}">LIKE</a>
-                    {% if recipe.published_date %}
-                    <p><b>{{ recipe.published_date }}</b> Views: <b>{{recipe.views}}</b>, Likes: <b>{{recipe.likes}}</b></p>
-                    {% endif %}
-                    <article>
-                        <p>
-                            {{ recipe.text|linebreaksbr }}
-                        </p>
-                    </article>
-                    {% if user == recipe.author %}
-                    <a class="btn btn-blog-red pull-right marginBottom10" href="{% url 'delete_recipe' pk=recipe.pk %}"><b>DELETE</b></a>
-                    <a class="btn btn-blog pull-right marginBottom10" href="{% url 'edit_recipe' pk=recipe.pk %}"><b>EDIT</b></a>
-                    {% endif %}
+                    <h1>Register a new user account</h1>
+                    <form method="post" action="">
+                        {% csrf_token %} {{ form.as_p }}
+                        <input type="submit" value="Create new user account" />
+                    </form>
                 </div>
             </div>
         </div>

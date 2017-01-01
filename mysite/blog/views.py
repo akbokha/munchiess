@@ -3,6 +3,11 @@ from .models import Post
 from django.utils import timezone
 from .forms import RecipeForm
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
+from .forms import UserForm
+from django.contrib.auth import login
+from django.contrib.auth.models import User
+
 
 def homepage(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -13,8 +18,17 @@ def homepage(request):
 
 def fullrecipe(request, pk):
     recipe = get_object_or_404(Post, pk=pk)
+    recipe.increment_views()
+    recipe.save()
     return render(request, 'blog/fullrecipe.html', {'recipe': recipe})
 
+def fullrecipelike(request, pk):
+    recipe = get_object_or_404(Post, pk=pk)
+    recipe.increment_likes()
+    recipe.save()
+    return render(request, 'blog/fullrecipe.html', {'recipe': recipe})
+
+@login_required
 def new_recipe(request):
     if request.method == "POST":
         form = RecipeForm(request.POST or None, request.FILES or None)
@@ -28,6 +42,7 @@ def new_recipe(request):
         form = RecipeForm()
     return render(request, 'blog/recipe_edit.html', {'form': form})
 
+@login_required
 def edit_recipe(request, pk):
     recipe = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -42,5 +57,27 @@ def edit_recipe(request, pk):
         form = RecipeForm(instance=recipe)
     return render(request, 'blog/recipe_edit.html', {'form': form})
 
+@login_required
+def delete_recipe(request, pk):
+    recipe = get_object_or_404(Post, pk=pk)
+    recipe.delete()
+    return redirect('homepage')
+
+def registeruser(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User.objects.create_user(**form.cleaned_data)
+            login(request, new_user)
+            return redirect('homepage')
+    else:
+        form = UserForm() 
+
+    return render(request, 'registration/register.html', {'form': form})
+
+def breakfast(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now(), category__icontains = "breakfast").order_by('published_date')
+    return render(request, 'blog/breakfast.html', {'posts': posts})
+    
 
     
