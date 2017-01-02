@@ -11,7 +11,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
     image = StdImageField(blank=False, default="", variations={'resize': (420, 160, True)}) 
-    views = models.IntegerField(default=0)
+    views = models.IntegerField(default=-1)
     likes = models.IntegerField(default=0)
     category = models.CharField(
         max_length=9,
