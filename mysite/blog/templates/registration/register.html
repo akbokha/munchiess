@@ -47,6 +47,16 @@
 
                 </div>
                 </nav>
+                {% if user.is_authenticated %}
+                <a class="btn btn-blog-logout pull-right marginBottom10" href="{% url 'logout' %}"><b>LOG OUT</b></a>
+                <a class="btn btn-blog pull-right marginBottom10" href="{% url 'new_recipe' %}"><b>NEW RECIPE</b></a>
+                <h1 class="top-menu" style="color: #5F1049;
+                !important;
+                font-family: LobsterTwo-Regular;
+                font-weight: 600;
+                ">Hello {{ user.username }}</h1> {% else %}
+                <a class="btn btn-blog pull-right marginBottom10" href="{% url 'login' %}"><b>LOGIN</b></a>
+                <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a> {% endif %}
             </div>
         </div>
 
@@ -54,25 +64,25 @@
 
     <div class="blog-items">
         <div class="container">
-          <div class="row">
-              <div class="col-sm-12 jumbotrondiv">
-                  <div class="jumbotron text-center jumbforms">
-                      <h1 style="color: white;
+            <div class="row">
+                <div class="col-sm-12 jumbotrondiv">
+                    <div class="jumbotron text-center jumbforms">
+                        <h1 style="color: white;
                       font-weight: 500;
                       font-family: LobsterTwo-Regular;">Munchiess</h1>
-                      <h2 style="color: white;
+                        <h2 style="color: white;
                       font-weight: 500;
                       font-family: LobsterTwo-Regular;">Welcome to Munchiess. Your go-to place for tasty recipes for every time of the day</h2>
-                  </div>
-                  <h4 id="about-us-story">
+                    </div>
+                    <h4 id="about-us-story">
                       Welcome to Munchiess! I am so glad you’re here. Munchies is a food blog, created by me, Hidden Classified. Here you’ll find recipes that are easy-to-make, worth your time and that you’ll want to make over and over again. Simply put, Munchiess is
                       a collection of recipes that I believe should be in the spotlight. I crawl the web and world looking for food, recipes and snacks that I love. After eating it, I ask myself do I want more? Was it easy and more importantly fun to make?
                       Did it make me smile, reach in for more and make me talk about it to others hours after finishing?<br> <br>If it’s a YES, then we’ll share it with you. The recipes are divided into breakfast and dinner. Lunch floats in between these two,
                       I believe that lunch items are too general to make them a seperate classification for them. In addition to the sections breakfast and dinner we have a section Snacks. Here you'll find very easy-to-make items or ready-to-eat items that I believe are worth sharing because of a certain
                       characteristic. In addition to sharing recipes and snacks, Munchiess provides nutritional information of the recipes and snacks, because we believe that when it comes to food, balance is key. Food should be nutritious, tasty, healthy and enjoyable!
                   </h4>
-              </div>
-          </div>
+                </div>
+            </div>
             <div class="row blog-items">
                 <div class="col-sm-3 blogShort last-blog-item">
                 </div>

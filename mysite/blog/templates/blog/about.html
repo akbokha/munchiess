@@ -28,6 +28,18 @@
 
                 </div>
                 </nav>
+                {% if user.is_authenticated %}
+                <a class="btn btn-blog-logout pull-right marginBottom10" href="{% url 'logout' %}"><b>LOG OUT</b></a>
+                <a class="btn btn-blog pull-right marginBottom10" href="{% url 'new_recipe' %}"><b>NEW RECIPE</b></a>
+                <h1 class="top-menu" style="color: #5F1049;
+                !important;
+                font-family: LobsterTwo-Regular;
+                font-weight: 600;
+                ">Hello {{ user.username }}</h1>
+                {% else %}
+                <a class="btn btn-blog pull-right marginBottom10" href="{% url 'login' %}"><b>LOGIN</b></a>
+                <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a>
+                {% endif %}
             </div>
         </div>
     </div>

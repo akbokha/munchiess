@@ -393,11 +393,11 @@ button.btn {
 
 .blog-items img {
     max-height: 160px;
-    width: 100%
+    width: auto;
 }
 
 .resize {
-  width: 420px;
+  min-width: 390px;
   height: auto;
 }
 

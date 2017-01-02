@@ -7,12 +7,13 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from django.db.models import Max, Count
 
 
 def homepage(request):
+    mostviewedposts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-views')[:3]
+    mostlikedposts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-likes')[:3]
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    mostviewedposts = Post.objects.filter(published_date__lte=timezone.now()).order_by('views')
-    mostlikedposts = Post.objects.filter(published_date__lte=timezone.now()).order_by('likes')
     return render(request, 'blog/home.html', {'mostviewedposts': mostviewedposts, 'mostlikedposts': mostlikedposts
                                               ,'posts': posts})
 

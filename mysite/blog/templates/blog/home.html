@@ -30,7 +30,11 @@
                 {% if user.is_authenticated %}
                 <a class="btn btn-blog-logout pull-right marginBottom10" href="{% url 'logout' %}"><b>LOG OUT</b></a>
                 <a class="btn btn-blog pull-right marginBottom10" href="{% url 'new_recipe' %}"><b>NEW RECIPE</b></a>
-                <h1 class="top-menu">Hello {{ user.username }}</h1>
+                <h1 class="top-menu" style="color: #5F1049;
+                !important;
+                font-family: LobsterTwo-Regular;
+                font-weight: 600;
+                ">Hello {{ user.username }}</h1>
                 {% else %}
                 <a class="btn btn-blog pull-right marginBottom10" href="{% url 'login' %}"><b>LOGIN</b></a>
                 <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a>
@@ -83,7 +87,13 @@
 
     <div class="blog-items">
         <div class="container">
-            {% for post in posts %}
+          <h1><a style="color: #5F1049;
+          !important;
+          font-family: LobsterTwo-Regular;
+          font-weight: 600;
+          text-decoration: underline;" >Top 3 Most Liked Recipes</a></h1>
+
+            {% for post in mostlikedposts %}
 
             <div class="row">
                 <div class="col-sm-5 blogShort last-blog-item">
@@ -98,7 +108,41 @@
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
                     {% if post.published_date %}
-                    <p><b>{{ post.published_date }}</b> Views: <b>{{post.views}}</b>, Likes: <b>{{post.likes}}</b></p>
+                    <p><b>{{ post.published_date }}</b> Views: <b>{{post.views}}</b>, Likes: <b>{{post.likes}}</b>, Author: <b>{{post.author}}</b></p>
+                    {% endif %}
+                    <article>
+                        <p>
+                            {{ post.text|linebreaksbr|truncatechars:675 }}
+                        </p>
+                    </article>
+                    <a class="btn btn-blog pull-right marginBottom10" href="{% url 'fullrecipe' pk=post.pk %}">READ MORE</a>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            <h1><a style="color: #5F1049;
+            !important;
+            font-family: LobsterTwo-Regular;
+            font-weight: 600;
+            text-decoration: underline;" >Top 3 Most Viewed Recipes</a></h1>
+
+            {% for post in mostviewedposts %}
+
+            <div class="row">
+                <div class="col-sm-5 blogShort last-blog-item">
+                    <h1><a style="color: #5F1049;
+                    !important;
+                    font-family: LobsterTwo-Regular;
+                    font-weight: 500;" href="{% url 'fullrecipe' pk=post.pk %}">{{ post.title }}</a></h1>
+                    <div class="resize">
+                        <img href="{% url 'fullrecipe' pk=post.pk %}" src={{post.image.resize.url}} alt="{{post.title}}" class="pull-left img-responsive thumb margin10 img-thumbnail">
+                        <!--<img src="img\sweetpotatopancakes.jpg" alt="Sweet Potato Pancakes" class="pull-left img-responsive thumb margin10 img-thumbnail"> !-->
+                    </div>
+                </div>
+                <div class="col-sm-7 blogShort contenttext">
+                    {% if post.published_date %}
+                    <p><b>{{ post.published_date }}</b> Views: <b>{{post.views}}</b>, Likes: <b>{{post.likes}}</b> <br /> Written By: <b>{{post.author}}</b></p>
                     {% endif %}
                     <article>
                         <p>

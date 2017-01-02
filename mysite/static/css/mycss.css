@@ -391,15 +391,7 @@ button.btn {
     margin-right: 10px;
 }
 
-.blog-items img {
-    max-height: 160px;
-    width: 100%
-}
 
-.resize {
-  width: 420px;
-  height: auto;
-}
 
 #mycarousel {
     height: auto;
