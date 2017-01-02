@@ -397,7 +397,7 @@ button.btn {
 }
 
 .resize {
-  min-width: 390px;
+  min-width: auto;
   height: auto;
 }
 
