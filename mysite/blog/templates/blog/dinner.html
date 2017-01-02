@@ -17,10 +17,10 @@
                         </div>
                         <div class="collapse navbar-collapse nav-wil navHeaderCollapse">
                             <ul class="nav navbar-nav">
-                                <li class="hvr-bounce-to-bottom active"><a href="{% url 'homepage'%}">Home</a></li>
+                                <li class="hvr-bounce-to-bottom"><a href="{% url 'homepage'%}">Home</a></li>
                                 <li class="hvr-bounce-to-bottom"><a href="{% url 'about'%}">About</a></li>
                                 <li class="hvr-bounce-to-bottom"><a href="{% url 'breakfast'%}">Breakfast</a></li>
-                                <li class="hvr-bounce-to-bottom"><a href="{% url 'dinner'%}">Dinner</a></li>
+                                <li class="hvr-bounce-to-bottom active "><a href="{% url 'dinner'%}">Dinner</a></li>
                                 <li class="hvr-bounce-to-bottom"><a href="{% url 'snacks'%}">Snacks</a></li>
                             </ul>
                         </div>
@@ -37,48 +37,7 @@
                 {% endif %}
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <a href="{% url 'about'%}">
-                        <div id="mycarousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#mycarousel" data-slide-to="1"></li>
-                                <li data-target="#mycarousel" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <img src="{% static 'img/caroussel/Dinner-Curry-Coconut-Shrimp.jpg' %}" alt="Coconut Shrimp" class="fill img-responsive">
-                                    <div class="carousel-caption" id="active-car-text">
-                                        <h2>Welcome to Munchiess</h2>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="{% static 'img/caroussel/proteinpancakes1.jpeg' %}" alt="Pancakes" class="fill img-responsive">
-                                    <div class="carousel-caption" id="active-car-text">
-                                        <h2>Your go-to place for tasty recipes</h2>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <img src="{% static 'img/caroussel/carrot-cake-oatmeal-cookies_5234.jpg' %}" alt="Carrot Oats" class="fill img-responsive">
-                                    <div class="carousel-caption" id="active-car-text">
-                                        <h2>For every time of the day</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--
-              <a class="carousel-control left" href="#mycarousel" data-slide-to="prev" role="button">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              </a>
-              <a class="carousel-control right" href="#mycarousel" data-slide-to="next" role="button">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              </a> !-->
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+
     </div>
 
     <div class="blog-items">

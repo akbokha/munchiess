@@ -5,6 +5,9 @@ from . import views
 urlpatterns = [
     url(r'^$', views.homepage, name='homepage'),
     url(r'^breakfast/$', views.breakfast, name='breakfast'),
+    url(r'^dinner/$', views.dinner, name='dinner'),
+    url(r'^snacks/$', views.snacks, name='snacks'),
+    url(r'^about/$', views.about, name='about'),
     url(r'^recipe/(?P<pk>\d+)/$', views.fullrecipe, name='fullrecipe'),
     url(r'^recipe/(?P<pk>\d+)/like/$', views.fullrecipelike, name='fullrecipelike'),
     url(r'^recipe/new/$', views.new_recipe, name='new_recipe'),

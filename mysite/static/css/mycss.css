@@ -1,3 +1,7 @@
+body, html {
+  height: 100%;
+}
+
 #feelgood {
     color: #5F1049;
 }
@@ -173,6 +177,14 @@
     text-shadow: black 0.3em 0.3em 0.3em;
 }
 
+.jumbforms {
+    background-image: url(../img/egg+recipe+-+13.jpg);
+    background-position: 0% 25%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-shadow: black 0.3em 0.3em 0.3em;
+}
+
 section {
     padding: 100px 0;
     text-align: center;
@@ -241,6 +253,7 @@ button.btn {
 }
 
 .blog-items {
+  min-height: 100%;
     padding-top: 20px;
     background-color: #ffceea;
 }

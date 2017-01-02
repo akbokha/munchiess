@@ -1,0 +1,155 @@
+{% extends 'blog/base.html' %} {% load staticfiles %} {% block content %}
+
+<body>
+    <div class="banner-body">
+        <div class="container">
+            <div class="header">
+                <div class="header-nav">
+                    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+                        <div class="navbar-header">
+
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navHeaderCollapse">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                            </button><a href="{% url 'homepage'%}" class="navbar-brand"><span>M</span>unchiess</a>
+                        </div>
+                        <div class="collapse navbar-collapse nav-wil navHeaderCollapse">
+                            <ul class="nav navbar-nav">
+                              <li class="hvr-bounce-to-bottom"><a href="{% url 'homepage'%}">Home</a></li>
+                              <li class="hvr-bounce-to-bottom active"><a href="{% url 'about'%}">About</a></li>
+                              <li class="hvr-bounce-to-bottom"><a href="{% url 'breakfast'%}">Breakfast</a></li>
+                              <li class="hvr-bounce-to-bottom"><a href="{% url 'dinner'%}">Dinner</a></li>
+                              <li class="hvr-bounce-to-bottom"><a href="{% url 'snacks'%}">Snacks</a></li>
+                            </ul>
+                            </ul>
+                        </div>
+
+                </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-me">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 jumbotrondiv">
+                    <h1 id="about-us-text">About Us</h1>
+                    <div class="jumbotron text-center jumb">
+                        <h1>Munchiess</h1>
+                        <h2>Welcome to Munchiess. Your go-to place for tasty recipes for every time of the day</h2>
+                    </div>
+                    <h3 id="about-us-story">
+                        Welcome to Munchiess! I am so glad you’re here. Munchies is a food blog, created by me, Hidden Classified. Here you’ll find recipes that are easy-to-make, worth your time and that you’ll want to make over and over again. Simply put, Munchiess is
+                        a collection of recipes that I believe should be in the spotlight. I crawl the web and world looking for food, recipes and snacks that I love. After eating it, I ask myself do I want more? Was it easy and more importantly fun to make?
+                        Did it make me smile, reach in for more and make me talk about it to others hours after finishing?<br> <br>If it’s a YES, then we’ll share it with you. The recipes are divided into breakfast and dinner. Lunch floats in between these two,
+                        I believe that lunch items are too general to make them a seperate classification for them. In addition to the sections breakfast and dinner we have a section Snacks. Here you'll find very easy-to-make items or ready-to-eat items that I believe are worth sharing because of a certain
+                        characteristic. In addition to sharing recipes and snacks, Munchiess provides nutritional information of the recipes and snacks, because we believe that when it comes to food, balance is key. Food should be nutritious, tasty, healthy and enjoyable!
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class='col-md-offset-2 col-md-8 text-center'>
+                    <h2 id="feelgood">Eat good, Feel good</h2>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-offset-2 col-md-8'>
+                    <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                        <!-- Bottom Carousel Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#quote-carousel" data-slide-to="1"></li>
+                            <li data-target="#quote-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Carousel Slides / Quotes -->
+                        <div class="carousel-inner">
+
+                            <!-- Quote 1 -->
+                            <div class="item active">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-3 text-center">
+                                            <img class="img-circle" src="{% static 'img/james-beard.jpg' %}" alt="James Beard" style="width: 120px;height:120px;">
+                                            <!--<img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" style="width: 100px;height:100px;">-->
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <q class="quotetext">Food is our common ground, a universal experience.</q>
+                                            <small class="quoteperson">James Beard</small>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <!-- Quote 2 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-3 text-center">
+                                            <img class="img-circle" src="{% static 'img/virginiawoolf.jpg' %}" alt="Virginia" style="width: 120px;height:120px;">
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <q class="quotetext">One cannot think well, love well, sleep well, if one has not dined well.</q>
+                                            <small class="quoteperson">Virginia Woolf</small>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                            <!-- Quote 3 -->
+                            <div class="item">
+                                <blockquote>
+                                    <div class="row">
+                                        <div class="col-sm-3 text-center">
+                                            <img class="img-circle" src="{% static 'img/thomaskeller.jpeg' %}" alt="Thomas Keller" style="width: 120px;height:120px;">
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <q class="quotetext">A recipe has no soul, you as the cook must bring soul to the recipe.</q>
+                                            <small class="quoteperson">Thomas Keller</small>
+                                        </div>
+                                    </div>
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <!-- Carousel Buttons Next/Prev -->
+                        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+                        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="navbar navbar-default navbar-bottom">
+            <div class="container">
+                <div class="row ftr">
+                    <div class="col-xs-6">
+                        <p class="navbar-text pull-left">
+                            Copyright 2016. All rights reserved.
+                        </p>
+                    </div>
+                    <div class="col-xs-6 input-box">
+                        <div class="row">
+                            <div class="col-sm-6" <h6 id="newslettertext">Sign-up for our weekly newsletter</h6>
+                            </div>
+                            <div class="col-sm-6" <form>
+                                <input name="email" type="text" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}" required="">
+                                <input id="submit-button" type="submit" value="Send">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+{% endblock %}

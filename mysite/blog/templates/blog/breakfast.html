@@ -18,10 +18,10 @@
                         <div class="collapse navbar-collapse nav-wil navHeaderCollapse">
                             <ul class="nav navbar-nav">
                                 <li class="hvr-bounce-to-bottom"><a href="{% url 'homepage'%}">Home</a></li>
-                                <li class="hvr-bounce-to-bottom"><a href="about.html">About</a></li>
+                                <li class="hvr-bounce-to-bottom"><a href="{% url 'about'%}">About</a></li>
                                 <li class="hvr-bounce-to-bottom active"><a href="{% url 'breakfast'%}">Breakfast</a></li>
-                                <li class="hvr-bounce-to-bottom"><a href="{% url 'homepage'%}">Dinner</a></li>
-                                <li class="hvr-bounce-to-bottom"><a href="{% url 'homepage'%}">Snacks</a></li>
+                                <li class="hvr-bounce-to-bottom"><a href="{% url 'dinner'%}">Dinner</a></li>
+                                <li class="hvr-bounce-to-bottom"><a href="{% url 'snacks'%}">Snacks</a></li>
                             </ul>
                         </div>
 
@@ -37,7 +37,7 @@
                 {% endif %}
             </div>
         </div>
-        
+
     </div>
 
     <div class="blog-items">

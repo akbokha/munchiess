@@ -78,6 +78,17 @@ def registeruser(request):
 def breakfast(request):
     posts = Post.objects.filter(published_date__lte=timezone.now(), category__icontains = "breakfast").order_by('published_date')
     return render(request, 'blog/breakfast.html', {'posts': posts})
+
+def dinner(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now(), category__icontains = "dinner").order_by('published_date')
+    return render(request, 'blog/dinner.html', {'posts': posts})
+
+def snacks(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now(), category__icontains = "snacks").order_by('published_date')
+    return render(request, 'blog/snacks.html', {'posts': posts})
+
+def about(request):
+    return render(request, 'blog/about.html')
     
 
     
