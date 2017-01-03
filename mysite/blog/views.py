@@ -47,16 +47,19 @@ def new_recipe(request):
 def edit_recipe(request, pk):
     recipe = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = RecipeForm(request.POST, instance=recipe)
+        form = RecipeForm(data=request.POST, instance=recipe)
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.author = request.user
             recipe.published_date = timezone.now()
+            if 'image' in request.FILES:
+                recipe.image = request.FILES['image']
             recipe.save()
             return redirect('fullrecipe', pk=recipe.pk)
     else:
         form = RecipeForm(instance=recipe)
     return render(request, 'blog/recipe_edit.html', {'form': form})
+
 
 @login_required
 def delete_recipe(request, pk):
