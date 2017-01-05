@@ -89,9 +89,36 @@
                 <div class="col-sm-9" style="margin-bottom: 20px;">
                     <h1>Register a new user account</h1>
                     <form method="post" action="">
-                        {% csrf_token %} {{ form.as_p }}
-                        <input type="submit" value="Create new user account" />
+                        {% csrf_token %}
+                        <table>
+                            <tr>
+                                <td>
+                                    <h4 style="margin-bottom: 2px; margin-right: 3px;">
+                                        {{ form.username.label_tag }}
+                                    </h4>
+                                </td>
+                                <td>{{ form.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 style="margin-bottom: 2px; margin-right: 3px;">
+                                        {{ form.email.label_tag }}
+                                    </h4>
+                                </td>
+                                <td>{{ form.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h4 style="margin-bottom: 2px; margin-right: 3px;">
+                                    {{ form.password.label_tag }}
+                                </h4></td>
+                                <td>{{ form.password }}</td>
+                            </tr>
+                        </table>
+
+                        <button type="submit" class="btn btn-blog-register marginBottom10">Register</button>
                     </form>
+                    <a href="{% url 'login' %}">Do you already have an user account? Sign In</a>
                 </div>
             </div>
         </div>

@@ -54,11 +54,9 @@
                 !important;
                 font-family: LobsterTwo-Regular;
                 font-weight: 600;
-                ">Hello {{ user.username }}</h1>
-                {% else %}
+                ">Hello {{ user.username }}</h1> {% else %}
                 <a class="btn btn-blog pull-right marginBottom10" href="{% url 'login' %}"><b>LOGIN</b></a>
-                <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a>
-                {% endif %}
+                <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a> {% endif %}
             </div>
         </div>
     </div>
@@ -92,23 +90,30 @@
                     {% if form.errors %}
                     <p id="usernamepasswordincorrect">Your username and password didn't match. Please try again.</p>
                     {% endif %}
-                    <h1>Log In</h1>
+                    <h1>User Sign In</h1>
                     <form method="post" action="{% url 'login' %}">
                         {% csrf_token %}
                         <table>
                             <tr>
-                                <td>{{ form.username.label_tag }}</td>
+                                <td>
+                                    <h4 style="margin-bottom: 2px; margin-right: 3px;">
+                                        {{ form.username.label_tag }}
+                                    </h4>
+                                </td>
                                 <td>{{ form.username }}</td>
                             </tr>
                             <tr>
-                                <td>{{ form.password.label_tag }}</td>
+                                <td>
+                                    <h4 style="margin-bottom: 2px; margin-right: 3px;">
+                                    {{ form.password.label_tag }}
+                                </h4></td>
                                 <td>{{ form.password }}</td>
                             </tr>
                         </table>
 
-                        <input type="submit" value="login" />
-                        <input type="hidden" name="next" value="{{ next }}" />
+                        <button type="submit" class="btn btn-blog-register marginBottom10">Sign In</button>
                     </form>
+                    <a href="{% url 'register' %}">Do you not have an user account yet? Register now!</a>
                 </div>
             </div>
         </div>

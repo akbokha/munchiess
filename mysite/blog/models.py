@@ -36,3 +36,11 @@ class Post(models.Model):
     def increment_likes(self):
         self.likes += 1
         
+class Comment(models.Model):
+    post = models.ForeignKey('blog.Post', related_name='comments')
+    author = models.CharField(max_length=200)
+    comment = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.comment

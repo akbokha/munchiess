@@ -253,7 +253,7 @@ button.btn {
 }
 
 .blog-items {
-  min-height: 100%;
+  min-height: 50%;
     padding-top: 20px;
     background-color: #ffceea;
 }
@@ -668,4 +668,8 @@ a.navbar-brand:hover {
     transform: scaleY(1);
     -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
     transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+.comment {
+    margin: 20px 0px 20px 20px;
 }

@@ -63,8 +63,8 @@
 
     <div class="blog-items">
         <div class="container">
-            <div style="margin-bottom: 30px;"class="row">
-                <div class="col-sm-5 blogShort last-blog-item">
+            <div class="row">
+                <div class="col-sm-5 blogShort">
                     <h1 style="color: #5F1049;
                   !important;
                   font-family: LobsterTwo-Regular;
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
-                    <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'fullrecipelike' pk=recipe.pk %}">LIKE</a> {% if recipe.published_date %}
+                     {% if recipe.published_date %}
                     <p><b>{{ recipe.published_date }}</b> Views: <b>{{recipe.views}}</b>, Likes: <b>{{recipe.likes}}</b></p>
                     {% endif %}
                     <article>
@@ -86,15 +86,49 @@
                     <a class="btn btn-blog-red pull-right marginBottom10" href="{% url 'delete_recipe' pk=recipe.pk %}"><b>DELETE</b></a>
                     <a class="btn btn-blog pull-right marginBottom10" href="{% url 'edit_recipe' pk=recipe.pk %}"><b>EDIT</b></a> {% endif %}
                 </div>
-                <a class="btn btn-blog-register marginBottom10" href="{% url 'add_comment' pk=recipe.pk %}"><b>ADD COMMENT</b></a>
             </div>
-            <hr> {% for comment in recipe.comments.all %}
-            <div class="comment">
-                <div class="date">{{ comment.created_date }}</div>
-                <strong>{{ comment.author }}</strong>
-                <p>{{ comment.comment|linebreaks }}</p>
+            <div style="margin-top: 100px;"class="row">
+              <div class="col-sm-7 blogShort last-blog-item">
+                <hr> {% for comment in recipe.comments.all %}
+                <div class="comment">
+                    <div style="margin-top: 50px;" class="date"><b>{{ comment.created_date }}</b></div>
+                    <strong>Written By: {{ comment.author }}</strong>
+                    <p>{{ comment.comment|linebreaks }}</p>
+                </div>
+                {% empty %}
+                <p><b>No comments here yet :(</b></p>
+                {% endfor %}
+              </div>
+              <div class="col-sm-4 blogShort">
+                <h1>New comment</h1>
+                <form method="POST" class="post-form">{% csrf_token %}
+                  <table>
+                      <tr>
+                          <td>
+                              <h4 style="margin-bottom: 2px; margin-right: 3px;">
+                                  {{ form.author.label_tag }}
+                              </h4>
+                          </td>
+                          <td>
+                            {% if user.is_authenticated %}
+                             <input type="text" name="author" value="{{ user.username }}" />
+                            {% else %}
+                            <input type="text" name="author" value="Guest Name: " />
+                            {% endif %}
+                            </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              <h4 style="margin-bottom: 2px; margin-right: 3px;">
+                              {{ form.comment.label_tag }}
+                          </h4></td>
+                          <td>{{ form.comment }}</td>
+                      </tr>
+                  </table>
+                  <button type="submit" class="btn btn-blog-register marginBottom10"><b>ADD COMMENT</b></button>
+                </form>
+              </div>
             </div>
-            {% endfor %}
         </div>
     </div>
     </div>

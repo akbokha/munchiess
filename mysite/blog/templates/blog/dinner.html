@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
                     {% if post.published_date %}
-                    <p><b>{{ post.published_date }}</b> Views: <b>{{post.views}}</b>, Likes: <b>{{post.likes}}</b></p>
+                    <p><b>{{ post.published_date }}</b> Views: <b>{{post.views}}</b>, Likes: <b>{{post.likes}}</b>, Comments: <b>{{ post.comments.count }}</b> <br /> Written By: <b>{{post.author}}</b></p>
                     {% endif %}
                     <article>
                         <p>
