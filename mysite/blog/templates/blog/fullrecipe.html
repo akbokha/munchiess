@@ -63,7 +63,7 @@
 
     <div class="blog-items">
         <div class="container">
-            <div style="margin-bottom: 30px;"class="row">
+            <div style="margin-bottom: 30px;" class="row">
                 <div class="col-sm-5 blogShort last-blog-item">
                     <h1 style="color: #5F1049;
                   !important;
@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
-                    <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'fullrecipelike' pk=recipe.pk %}">LIKE</a> {% if recipe.published_date %}
+                    <a style="margin-left: 2px" class="btn btn-blog-register pull-right marginBottom10" href="{% url 'fullrecipelike' pk=recipe.pk %}">LIKE</a> {% if recipe.published_date %}
                     <p><b>{{ recipe.published_date }}</b> Views: <b>{{recipe.views}}</b>, Likes: <b>{{recipe.likes}}</b></p>
                     {% endif %}
                     <article>
@@ -85,15 +85,17 @@
                     {% if user == recipe.author %}
                     <a class="btn btn-blog-red pull-right marginBottom10" href="{% url 'delete_recipe' pk=recipe.pk %}"><b>DELETE</b></a>
                     <a class="btn btn-blog pull-right marginBottom10" href="{% url 'edit_recipe' pk=recipe.pk %}"><b>EDIT</b></a> {% endif %}
+                    <a class="btn btn-blog-register marginBottom10" href="{% url 'add_comment' pk=recipe.pk %}"><b>ADD COMMENT</b></a>
                 </div>
-                <a class="btn btn-blog-register marginBottom10" href="{% url 'add_comment' pk=recipe.pk %}"><b>ADD COMMENT</b></a>
             </div>
             <hr> {% for comment in recipe.comments.all %}
-            <div class="comment">
-                <div class="date">{{ comment.created_date }}</div>
-                <strong>{{ comment.author }}</strong>
+            <div class="comment blogShort">
+                <div style="margin-top: 50px;" class="date"><b>{{ comment.created_date }}</b></div>
+                <i>Written By: <b>{{ comment.author }}</b></i>
                 <p>{{ comment.comment|linebreaks }}</p>
             </div>
+            {% empty %}
+            <p><b>No comments here yet :(</b></p>
             {% endfor %}
         </div>
     </div>
