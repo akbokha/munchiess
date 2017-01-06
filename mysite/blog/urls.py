@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^recipe/(?P<pk>\d+)/comment/$', views.add_comment, name='add_comment'),
     url(r'api/$', views.RecipeList.as_view()),
     url(r'^api/(?P<pk>\d+)/$', views.RecipeDetail.as_view()),
+    url(r'^apidocs/', include('rest_framework_docs.urls')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
