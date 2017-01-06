@@ -34,11 +34,9 @@
                 !important;
                 font-family: LobsterTwo-Regular;
                 font-weight: 600;
-                ">Hello {{ user.username }}</h1>
-                {% else %}
+                ">Hello {{ user.username }}</h1> {% else %}
                 <a class="btn btn-blog pull-right marginBottom10" href="{% url 'login' %}"><b>SIGN IN</b></a>
-                <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a>
-                {% endif %}
+                <a class="btn btn-blog-register pull-right marginBottom10" href="{% url 'register' %}"><b>REGISTER</b></a> {% endif %}
             </div>
         </div>
 
@@ -48,10 +46,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5 blogShort last-blog-item">
+                    {% if edit%}
                     <h1 style="color: #5F1049;
-                  !important;
-                  font-family: LobsterTwo-Regular;
-                  font-weight: 500;">New Recipe</h1>
+                !important;
+                font-family: LobsterTwo-Regular;
+                font-weight: 500;">Edit Recipe</h1> {% else %}
+                    <h1 style="color: #5F1049;
+                !important;
+                font-family: LobsterTwo-Regular;
+                font-weight: 500;">New Recipe</h1> {% endif %}
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
                     <form method="POST" enctype="multipart/form-data" class="post-form">{% csrf_token %} {{ form.as_p}}

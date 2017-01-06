@@ -31,6 +31,7 @@ def fullrecipelike(request, pk):
 
 @login_required
 def new_recipe(request):
+    edit = False
     if request.method == "POST":
         form = RecipeForm(request.POST or None, request.FILES or None)
         if form.is_valid():
@@ -41,10 +42,11 @@ def new_recipe(request):
             return redirect('fullrecipe', pk=recipe.pk)
     else:
         form = RecipeForm()
-    return render(request, 'blog/recipe_edit.html', {'form': form})
+    return render(request, 'blog/recipe_edit.html', {'form': form, 'edit': edit})
 
 @login_required
 def edit_recipe(request, pk):
+    edit = True
     recipe = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = RecipeForm(data=request.POST, instance=recipe)
@@ -58,7 +60,7 @@ def edit_recipe(request, pk):
             return redirect('fullrecipe', pk=recipe.pk)
     else:
         form = RecipeForm(instance=recipe)
-    return render(request, 'blog/recipe_edit.html', {'form': form})
+    return render(request, 'blog/recipe_edit.html', {'form': form, 'edit': edit})
 
 
 @login_required
