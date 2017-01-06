@@ -1,5 +1,6 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 
 urlpatterns = [
@@ -15,4 +16,8 @@ urlpatterns = [
     url(r'^recipe/(?P<pk>\d+)/delete/$', views.delete_recipe, name='delete_recipe'),
     url(r'^register/$', views.registeruser, name='register'),
     url(r'^recipe/(?P<pk>\d+)/comment/$', views.add_comment, name='add_comment'),
+    url(r'api/$', views.RecipeList.as_view()),
+    url(r'^api/(?P<pk>\d+)/$', views.RecipeDetail.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

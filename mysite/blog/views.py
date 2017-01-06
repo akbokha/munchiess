@@ -8,7 +8,8 @@ from .forms import UserForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.db.models import Max, Count
-
+from rest_framework import generics
+from .serializers import RecipeSerializer
 
 def homepage(request):
     mostviewedposts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-views')[:3]
@@ -77,7 +78,7 @@ def registeruser(request):
             login(request, new_user)
             return redirect('homepage')
     else:
-        form = UserForm() 
+        form = UserForm()
 
     return render(request, 'registration/register.html', {'form': form})
 
@@ -108,3 +109,11 @@ def add_comment(request, pk):
     else:
         form = CommentForm()
     return render(request, 'blog/addcomment.html', {'form': form, 'recipe': post, 'pk': pk})
+
+class RecipeList(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = RecipeSerializer
+
+class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Post.objects.all()
+    serializer_class = RecipeSerializer
