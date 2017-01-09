@@ -117,3 +117,31 @@ class RecipeList(generics.ListCreateAPIView):
 class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = RecipeSerializer
+
+class Top3LikedRecipes(generics.ListCreateAPIView):
+    queryset = Post.objects.filter(published_date__lte=timezone.now()).order_by('-likes')[:3]
+    serializer_class = RecipeSerializer
+
+class Top3ViewedRecipes(generics.ListCreateAPIView):
+    queryset = Post.objects.filter(published_date__lte=timezone.now()).order_by('-views')[:3]
+    serializer_class = RecipeSerializer
+
+class MostLikedRecipe(generics.ListCreateAPIView):
+    queryset = Post.objects.filter(published_date__lte=timezone.now()).order_by('-likes')[:1]
+    serializer_class = RecipeSerializer
+
+class MostViewedRecipe(generics.ListCreateAPIView):
+    queryset = Post.objects.filter(published_date__lte=timezone.now()).order_by('-views')[:1]
+    serializer_class = RecipeSerializer
+
+class BreakfastList(generics.ListCreateAPIView):
+    queryset = Post.objects.filter(published_date__lte=timezone.now(), category__icontains = "breakfast").order_by('-published_date')
+    serializer_class = RecipeSerializer
+
+class DinnerList(generics.ListCreateAPIView):
+    queryset = Post.objects.filter(published_date__lte=timezone.now(), category__icontains = "dinner").order_by('-published_date')
+    serializer_class = RecipeSerializer
+
+class SnackList(generics.ListCreateAPIView):
+    queryset = Post.objects.filter(published_date__lte=timezone.now(), category__icontains = "snacks").order_by('-published_date')
+    serializer_class = RecipeSerializer

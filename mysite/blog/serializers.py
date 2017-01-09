@@ -5,4 +5,4 @@ from django.contrib.auth.models import User
 class RecipeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('id', 'author', 'title', 'text', 'created_date', 'image', 'views', 'likes', 'category')
+        fields = ('id', 'author', 'title', 'text', 'published_date', 'image', 'views', 'likes', 'category')
