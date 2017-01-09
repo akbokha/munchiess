@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-sm-7 blogShort contenttext">
                     <a style="margin-left: 4px" class="btn btn-blog-register pull-right marginBottom10" href="{% url 'fullrecipelike' pk=recipe.pk %}">LIKE</a> {% if recipe.published_date %}
-                    <p><b>{{ recipe.published_date }}</b> Views: <b>{{recipe.views}}</b>, Likes: <b>{{recipe.likes}}</b></p>
+                    <p><b>{{ recipe.published_date }}</b> Views: <b>{{recipe.views}}</b>, Likes: <b>{{recipe.likes}}</b>, Comments: <b>{{ recipe.comments.count }}</b> <br /> Written By: <b>{{recipe.author}}</b></p>
                     {% endif %}
                     <article>
                         <p>
